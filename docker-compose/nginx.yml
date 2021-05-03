@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /opt/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - /opt/docker/nginx/log:/var/log/nginx
+      - /opt/docker/nginx/html:/html
+      - /opt/docker/nginx/letsencrypt:/etc/letsencrypt

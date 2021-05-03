@@ -1,18 +1,16 @@
 version: '3.7'
-service:
-  jenkins: 
-  container_name: jenkins
-  image: 'jenkinszh/jenkins-zh:lts'
-  restart: always
-  enviroment: 
-    - TZ=Asia/Shanghai
-  ports:
-    - '8088:8080'
-    - '50000:50000'
-  volume: 
-    - /opt/docker/jenkins/data:/var/jenkins_home
-    - /var/run/docker.sock:/var/run/docker.sock
-    - /usr/bin/docker:/usr/bin/docker
-    - /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
-  privileged: true
-  user: root
+services:
+  jenkins:
+    container_name: jenkins
+    image: 'jenkinszh/jenkins-zh:lts'
+    restart: always
+    ports:
+      - '8088:8080'
+      - '50000:50000'
+    volumes:
+      - /opt/docker/jenkins/data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/lib/x86_64-linux-gnu/libltdl.so.7:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+    privileged: true
+    user: root
